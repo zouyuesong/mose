@@ -1,0 +1,13 @@
+# envar: setup CGO_CFLAGS to point to mosek libs
+export CGO_CFLAGS="-I$HOME/mosek/9.3/tools/platform/linux64x86/h"
+export CGO_LDFLAGS="-L$HOME/mosek/9.3/tools/platform/linux64x86/bin -Xlinker -rpath-link=$HOME/mosek/9.3/tools/platform/linux64x86/bin"
+
+# to build
+```
+make
+```
+
+
+note:
+1) the mosek version is pretty old for this version
+2) there is a binary in bin/, sample data is in input/. if you do bin/csvport -i input.csv -c constraint.csv -w weight.csv -o output.csv , it should be runnable after you have a free license from mosek. 

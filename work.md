@@ -1,0 +1,2 @@
+./golang_mosek 项目本质只是对input写了个api和preprocess，最后在solver里传给mosek求解。 你可以再./golang_mosek/admm/下实现一个新的基础款admm algo，然后让项目主体调admm 或者solver预处理后调admm。运行一次比较结果和mosek结果的差距和用时差距（mosek 用时170ms，log/run_real.md里可见，另外注意不要改这个log），结果写到log/admm/basic.md, 尝试跑通到结果相似为止.  
+下一步： 再按照你./admm.md调研到的算法，逐一尝试优化basic admm，迭代运行测试，结果和迭代开发过程写到log/admm/improving.md

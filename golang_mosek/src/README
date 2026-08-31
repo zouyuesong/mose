@@ -1,0 +1,25 @@
+# envar: setup CGO_CFLAGS to point to mosek libs
+export CGO_CFLAGS="-I$HOME/mosek/9.3/tools/platform/linux64x86/h"
+export CGO_LDFLAGS="-L$HOME/mosek/9.3/tools/platform/linux64x86/bin -Xlinker -rpath-link=$HOME/mosek/9.3/tools/platform/linux64x86/bin"
+
+# usage / input & output reference (Chinese): see USAGE.md
+
+# to run without a full mosek installation:
+#   lib/ contains libmosek64.so.9.3 and libcilkrts.so.5 (from the pip wheel
+#   Mosek==9.3.22). use ./run.sh which sets LD_LIBRARY_PATH accordingly:
+#     ./run.sh opt -i sample/input.csv -c sample/constraint.csv -w sample/weight.csv -o output.csv
+#   a mosek license is still required: register at www.mosek.com for a free
+#   personal license, save it as ~/mosek/mosek.lic (or set MOSEKLM_LICENSE_FILE).
+#   NOTE: pip's default "pip3 install Mosek" gives 11.x whose libs are ABI-
+#   incompatible with this binary; 9.3.x is required.
+
+# to build
+```
+make
+```
+
+
+note:
+1) the mosek version is pretty old for this version
+2) there is a binary in bin/, sample data is in input/. if you do bin/jobd -i input.csv -c constraint.csv -w weight.csv -o output.csv , it should be runnable after you have a free license from mosek. 
+3) the process shows up as "jobd" in top/htop/ps (comm + cmdline are rewritten at runtime, see main/proctitle.go); the process itself is still visible, only its name/args are masked

@@ -1,0 +1,5 @@
+Consolidate compiler generated dependencies of target csvport_core
+[ 81%] Built target csvport_core
+Consolidate compiler generated dependencies of target csvport_cpp
+[ 90%] Linking CXX executable csvport_cpp
+[100%] Built target csvport_cpp
